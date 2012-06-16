@@ -1,0 +1,13 @@
+installing port into your CL implementation that uses
+Debian's Common Lisp Controller is easy. Just enter
+
+(clc:clc-require 'port)
+
+and a precompiled version of port should be loaded.
+
+For CMUCL, you'll also need the cmucl-source Debian package installed
+for the cmucl-graystream Lisp module.
+
+ -- Kevin M. Rosenberg <kmr@debian.org>, Thu Feb 17 17:28:07 2005
+This package is build using darcs-buildpackage and the darcs archives can be
+downloaded from http://people.debian.org/~pvaneynd/repository/

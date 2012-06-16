@@ -1,0 +1,2170 @@
+2006-04-08 00:09  sds
+
+	* sys.lisp:
+
+	(arglist) [sbcl]: require :sb-introspect at top-level, not inside the function
+
+2006-04-07 23:59  sds
+
+	* ext.lisp:
+
+	(quit) [sbcl]: :unix-code --> :unix-status
+
+2006-03-06 18:20  sds
+
+	* ext.lisp:
+
+	(string-tokens): accept :end
+
+2005-12-26 00:53  sds
+
+	* net.lisp:
+
+	(open-socket-server) [lispworks]: use start-up-server instead of
+	start-up-server-and-mp because it is also available on win32
+
+2005-11-15 00:36  sds
+
+	* ext.lisp:
+
+	(with-gensyms): more expressive lambda list
+
+2005-11-08 21:52  sds
+
+	* sys.lisp:
+
+	(variable-not-special): handle funbound symbol
+
+2005-11-08 16:18  sds
+
+	* sys.lisp:
+
+	(variable-not-special): new function
+
+2005-10-09 05:57  sds
+
+	* shell.lisp:
+
+	(close-pipe): close constituent streams
+
+2005-08-30 16:58  marcoxa
+
+	* environment/: INSTALLATION, README, env-package.lisp, env.system,
+	  environment.lisp, feature-tagged-type-class.lisp,
+	  init-environment.lisp, load-cl-environment.lisp, machine.lisp,
+	  operating-system.lisp, software.lisp, system-info.lisp,
+	  utilities.lisp, impl-dependent/allegro.lisp,
+	  impl-dependent/clisp.lisp, impl-dependent/cmucl.lisp,
+	  impl-dependent/corman.lisp, impl-dependent/lcl.lisp,
+	  impl-dependent/lispworks.lisp, impl-dependent/sbcl.lisp:
+
+	Minor changes to package.
+	Enhanced CLisp portability.
+	Updated Copyright.
+	Added new OS for fun.
+
+2005-08-05 21:42  sds
+
+	* sys.lisp:
+
+	(compiled-file-p): pass NIL #\a to PEEK-CHAR
+
+2005-08-05 20:31  sds
+
+	* sys.lisp:
+
+	(compiled-file-p) [clisp]: fixed empty file handling; optimized
+
+2005-06-24 18:16  sds
+
+	* net.lisp:
+
+	(socket) [CMU|SCL]: define to STREAM
+	Reported by David Tolpin <dvd@davidashen.net>
+
+2005-06-14 18:35  sds
+
+	* ext.lisp:
+
+	removed the defpackage hack; use #: instead
+
+2005-05-23 17:18  sds
+
+	* proc.lisp:
+
+	openmcl patch from David Tolpin
+
+2005-05-23 17:12  sds
+
+	* net.lisp:
+
+	(open-socket): fixed a typo
+	assume that mcl is the same as openmcl
+
+2005-05-09 15:47  sds
+
+	* path.lisp:
+
+	(logical-host-p) [sbcl]: *LOGICAL-HOSTS* is in SB-IMPL
+
+2005-05-04 16:25  airfoyle
+
+	* ext.lisp:
+
+	Keep ext.lisp from necessarily defining :port package with upper-case name
+
+2005-01-28 00:16  sds
+
+	* net.lisp:
+
+	[cmu scl]: (require :simple-streams)
+	(socket) [cmu scl]: STREAM:SOCKET-SIMPLE-STREAM
+	(open-socket) [cmu scl]: create a STREAM:SOCKET-SIMPLE-STREAM
+	(set-socket-stream-format) [cmu scl]: assume bivalent stream
+
+2005-01-28 00:02  sds
+
+	* net.lisp, sys.lisp, ext.lisp:
+
+	updated (c)year
+
+2005-01-26 20:32  sds
+
+	* net.lisp:
+
+	(set-socket-stream-format): new function
+
+2004-12-23 15:59  sds
+
+	* sys.lisp:
+
+	CMUCL DEFSTRUCT hack: INTERN before EXPORT
+
+2004-12-23 15:50  sds
+
+	* sys.lisp:
+
+	CMUCL DEFSTRUCT hack: redefine DEFSTRUCT instead of defining
+	a global MAKE-LOAD-FORM method on STRUCTURE-OBJECTs
+
+2004-12-06 16:03  sds
+
+	* sys.lisp:
+
+	(arglist) [SBCL]: require :SB-INTROSPECT
+	from Alexey Dejneka via Szymon
+
+2004-12-05 16:38  sds
+
+	* sys.lisp:
+
+	(arglist) [SBCL]: SB-KERNEL:%SIMPLE-FUN-ARGLIST returns a list
+	Reported by Szymon
+
+2004-12-05 01:01  sds
+
+	* sys.lisp:
+
+	(arglist) [SBCL]: same as CMU/SCL
+	Reported by Szymon
+
+2004-12-01 18:44  sds
+
+	* sys.lisp:
+
+	(arglist) [CMU, SCL]: handle generic functions
+	with PCL:GENERIC-FUNCTION-LAMBDA-LIST
+
+2004-11-30 20:52  sds
+
+	* sys.lisp:
+
+	(compiled-file-p) [CLISP]: use PEEK-CHAR+READ
+	instead of READ-FROM-STRING+READ-LINE
+
+2004-11-30 19:54  sds
+
+	* sys.lisp:
+
+	(compiled-file-p) [CLISP]: fixed for CLISP 2.34
+
+2004-11-30 19:14  sds
+
+	* sys.lisp:
+
+	(compiled-file-p): new function
+
+2004-11-09 17:31  sds
+
+	* net.lisp:
+
+	(socket-service-port): do not modify immutable strings (SYMBOL-NAME)
+
+2004-10-19 01:03  sds
+
+	* path.lisp:
+
+	(safe-truename): TRUENAME cannot return NIL
+
+2004-10-18 17:17  sds
+
+	* ext.lisp:
+
+	(compose-safe): new macro
+
+2004-08-03 01:09  sds
+
+	* net.lisp:
+
+	(socket, open-socket, socket-server, open-socket-server, socket-accept)
+	(socket-server-close): support ABCL
+
+2004-08-03 00:44  sds
+
+	* ext.lisp:
+
+	(gc, quit): support ABCL
+
+2004-07-29 22:34  sds
+
+	* path.lisp:
+
+	comment typo
+
+2004-07-16 18:30  sds
+
+	* path.lisp:
+
+	(logical-host-p): new function
+
+2004-06-10 18:26  marcoxa
+
+	* environment/ChangeLog:
+
+	ChangeLog updated.
+
+2004-06-10 18:23  marcoxa
+
+	* environment/: INSTALLATION, env-package.lisp, software.lisp,
+	  system-info.lisp, impl-dependent/allegro.lisp,
+	  impl-dependent/clisp.lisp, impl-dependent/cmucl.lisp,
+	  impl-dependent/lcl.lisp, impl-dependent/sbcl.lisp:
+
+	Made several changes to the implementation dependent files and cleaned
+	up a bit some stale code.
+
+2004-06-09 21:07  marcoxa
+
+	* environment/ChangeLog:
+
+	ChangeLog updated.
+
+2004-06-09 21:05  marcoxa
+
+	* environment/: INSTALLATION, README, load-cl-environment.lisp,
+	  operating-system.lisp, impl-dependent/corman.lisp,
+	  impl-dependent/lispworks.lisp:
+
+	Fixed a few buglets and made the system more portable.
+
+2004-05-18 23:20  sds
+
+	* sys.lisp:
+
+	support more MOPish CLISP (a temporary hack for the CLISP development version)
+
+2004-04-09 22:15  sds
+
+	* net.lisp:
+
+	(open-socket): suport GCL
+
+2004-01-21 16:31  marcoxa
+
+	* environment/ChangeLog:
+
+	ChangeLog updated.
+
+2004-01-21 16:30  marcoxa
+
+	* environment/README:
+
+	Updated slightly.
+
+2004-01-21 16:29  marcoxa
+
+	* environment/load-cl-environment.lisp:
+
+	Changed the installation procedure.  Now CL-ENVIRONMENT loads just by
+	loading the `loader' file.
+
+2004-01-21 16:28  marcoxa
+
+	* environment/INSTALLATION:
+
+	Changed the INSTALLATION instructions.
+
+2004-01-21 16:28  marcoxa
+
+	* environment/env.system:
+
+	Cleaned up the definition to reflect the newest MK:DEFSYSTEM features.
+	Also changed the copyright notice.
+
+2004-01-08 23:29  marcoxa
+
+	* environment/ChangeLog:
+
+	ChangeLog updated.
+
+2004-01-08 23:28  marcoxa
+
+	* environment/impl-dependent/cmucl.lisp:
+
+	Aligned content with SBCL and LW.
+
+2004-01-08 23:27  marcoxa
+
+	* environment/impl-dependent/: sbcl.lisp, lcl.lisp:
+
+	Updated copyright.
+
+2004-01-08 23:19  marcoxa
+
+	* environment/ChangeLog:
+
+	ChangeLog updated.
+
+2004-01-08 23:18  marcoxa
+
+	* environment/env-package.lisp:
+
+	Copyright updated.  New symbols exported.
+
+2004-01-08 23:18  marcoxa
+
+	* environment/: feature-tagged-type-class.lisp, environment.lisp:
+
+	Copyright updated.
+
+2004-01-08 23:17  marcoxa
+
+	* environment/init-environment.lisp:
+
+	Fixed copyright and added some SBCL support.
+
+2004-01-08 23:14  marcoxa
+
+	* environment/load-cl-environment.lisp:
+
+	Changed copyright and fixed some typos.  Introduced the
+	CL-ENVIRONMENT-LOADER package to hide loading and compiling details.
+
+2004-01-08 23:11  marcoxa
+
+	* environment/machine.lisp:
+
+	Fixed wrong file name.
+
+2004-01-08 23:09  marcoxa
+
+	* environment/: system-info.lisp, machine.lisp:
+
+	Copyright updated.
+
+2004-01-08 23:09  marcoxa
+
+	* environment/impl-dependent/lispworks.lisp:
+
+	Fixed some problems with directory changes and modified copyright etc etc.
+
+2004-01-08 23:03  marcoxa
+
+	* environment/impl-dependent/: clisp.lisp, cmucl.lisp:
+
+	Minor changes to the file (copyright fixes etc etc)
+
+2004-01-08 23:02  marcoxa
+
+	* environment/impl-dependent/allegro.lisp:
+
+	Minor changes to the file (fixed copyright, etc etc)
+
+2004-01-08 22:59  marcoxa
+
+	* environment/utilities.lisp:
+
+	Added some simple functions like CD etc etc.
+
+2004-01-08 22:43  marcoxa
+
+	* environment/software.lisp:
+
+	Made minor updates to the file.
+
+2004-01-08 22:40  marcoxa
+
+	* environment/operating-system.lisp:
+
+	Updated file for Mac OS X.
+
+2003-09-29 19:20  sds
+
+	* port.html:
+
+	~checkout~ -> *checkout*
+
+2003-09-25 05:47  rtoy
+
+	* gray.lisp:
+
+	Use (require 'gray-streams) if the version of CMUCL supports package
+	locks.  (This does the necessary package-lock stuff to load Gray
+	streams without errors.)
+
+2003-07-25 15:05  sds
+
+	* sys.lisp:
+
+	(getenv) [CLISP]: use EXT:GETENV (not SYS)
+
+2003-06-08 00:01  sds
+
+	* sys.lisp, net.lisp, path.lisp, proc.lisp, shell.lisp, ext.lisp,
+	  gray.lisp:
+
+	update (C) year
+
+2003-06-07 23:59  sds
+
+	* ext.lisp:
+
+	export CODE slot accessors
+
+2003-06-06 04:05  sds
+
+	* path.lisp:
+
+	(un-unspecific): new function: in lispworks,
+	TRUENAME replaces NIL components with :UNSPECIFIC
+	(pathname-ensure-name, probe-directory): use it
+	(safe-truename): new function
+
+2003-05-16 18:12  sds
+
+	* sys.lisp:
+
+	support SCL (from Ram Krishnan <rkris@kriyative.net>)
+
+2003-05-16 18:07  sds
+
+	* proc.lisp:
+
+	support SCL and OpenMCL (from Ram Krishnan <rkris@kriyative.net>)
+
+2003-05-16 17:56  sds
+
+	* net.lisp:
+
+	support SCL and OpenMCL (from Ram Krishnan <rkris@kriyative.net>)
+
+2003-05-16 17:41  sds
+
+	* gray.lisp:
+
+	support SCL and OpenMCL (from Ram Krishnan <rkris@kriyative.net>)
+
+2003-03-12 19:06  sds
+
+	* proc.lisp:
+
+	(make-lock, with-lock) [Genera]: implemented
+	From Rusty Johnson <rustyjohnson@users.sourceforge.net>
+
+2003-02-17 23:53  sds
+
+	* net.lisp:
+
+	(network, timeout): avoid using `slot-boundp' on conditions
+
+2003-02-17 23:52  sds
+
+	* ext.lisp:
+
+	(code): avoid using `slot-boundp' on conditions
+
+2003-02-14 18:23  sds
+
+	* proc.lisp:
+
+	(process-yield) [Genera, Lucid]: implemented
+	From  Rusty Johnson <rustyjohnson@users.sf.net>
+
+2003-01-21 18:43  sds
+
+	* net.lisp:
+
+	(socket-service-port): service name may contain #\/ (FreeBSD)
+	Reported by "Walter C. Pelissero" <walter@pelissero.org>
+
+2002-12-15 15:45  sds
+
+	* ext.lisp:
+
+	(unlock-package, restore-package-lock): support ECL
+	From Juan Jose Garcia Ripoll <jlr@mpq.mpg.de>
+
+2002-11-30 23:31  sds
+
+	* shell.lisp:
+
+	(run-prog): use REMOVE-PLIST instead of REMF
+
+2002-11-30 23:30  sds
+
+	* ext.lisp:
+
+	(remove-plist): added
+
+2002-11-28 21:24  sds
+
+	* ext.lisp:
+
+	(with-gensyms): append the variable name to GENSYM prefix
+
+2002-10-27 18:03  kevinrosenberg
+
+	* port.system:
+
+	reverse erroroneous commit
+
+2002-10-27 18:01  kevinrosenberg
+
+	* port.system, sys.lisp:
+
+	Push keyword rather than string on ext:*environment-list* for cmucl. See http://bugs.debian.org/166616
+
+2002-07-21 17:23  sds
+
+	* sys.lisp:
+
+	(getenv) [mcl]: support
+	From John Wiseman <jjwiseman@yahoo.com>
+
+2002-07-21 17:22  sds
+
+	* net.lisp:
+
+	(open-socket) [mcl]: support
+	From John Wiseman <jjwiseman@yahoo.com>
+
+2002-06-20 15:24  sds
+
+	* net.lisp:
+
+	(socket-host/port) [lispworks]: fixed a typo
+	From Dave Fox <davef@xanalys.com>
+
+2002-06-18 16:01  sds
+
+	* ext.lisp:
+
+	(required-argument): reverted the last patch:
+	return type NIL means non-returning function
+
+2002-06-17 23:38  sds
+
+	* path.lisp:
+
+	(probe-directory) [generic]: re-use `path'
+
+2002-06-17 22:10  sds
+
+	* ext.lisp:
+
+	(required-argument) [-cmu]: fixed declaration
+	From Dave Fox <davef@xanalys.com>
+
+2002-06-14 22:25  marcoxa
+
+	* environment/impl-dependent/lcl.lisp:
+
+	Fixed a few mistakes with Lucid specicication.
+
+2002-06-14 22:21  marcoxa
+
+	* environment/impl-dependent/sbcl.lisp:
+
+	File added.
+
+2002-06-05 16:08  sds
+
+	* path.lisp:
+
+	(load-logical-host-def): code now corresponds to the docs
+	Reported by Hallvard B. Furuseth <h.b.furuseth@usit.uio.no>
+
+2002-06-05 16:07  sds
+
+	* net.lisp:
+
+	(socket, socket-server, wait-for-stream, open-unix-socket):
+	made read conditionals more consistent
+	Reported by Hallvard B. Furuseth <h.b.furuseth@usit.uio.no>
+
+2002-05-24 23:38  sds
+
+	* port.html:
+
+	link to the CLOCC distribution site
+
+2002-05-10 21:33  marcoxa
+
+	* environment/ChangeLog:
+
+	ChangeLog updated.
+
+2002-05-10 21:31  marcoxa
+
+	* environment/init-environment.lisp:
+
+	Fixed the read time conditionals to take into account CMUCL 18d.
+
+2002-05-02 15:38  sds
+
+	* ext.lisp:
+
+	(unlock-package, restore-package-lock) [lispworks]: :load-toplevel too
+
+2002-04-25 20:02  sds
+
+	* net.lisp:
+
+	(socket-accept) [net.sbcl.sockets]: wait now works
+	(wait-for-stream) [sbcl]: separate support for net.sbcl.sockets and db-sockets
+	(open-unix-socket) [sbcl]: support net.sbcl.sockets
+	From Martin Atzmueller <martin@atzmueller.net>
+
+2002-04-21 21:56  sds
+
+	* ext.lisp:
+
+	(unlock-package, restore-package-lock): new macros
+
+2002-03-30 05:18  sds
+
+	* net.lisp:
+
+	Support SBCL/DB-SOCKETS
+	(vector-to-ipaddr, ipaddr-to-vector) [sbcl db-sockets]: new functions
+	(resolve-host-ipaddr, socket, open-socket, socket-host/port)
+	(socket-server, open-socket-server, socket-accept, socket-server-close)
+	(socket-server-host/port): support SBCL/DB-SOCKETS
+	(wait-for-stream): support SBCL
+	(open-unix-socket): support Allegro & SBCL/DB-SOCKETS
+	From Peter Van Eynde <pvaneynd@debian.org>
+
+2002-03-30 01:51  sds
+
+	* sys.lisp:
+
+	(variable-special-p) [sbcl]: SB-WALKER:VAR-GLOBALLY-SPECIAL-P
+	instead of SB-WALKER:VARIABLE-GLOBALLY-SPECIAL-P
+	(arglist): SB-KERNEL:%SIMPLE-FUN-ARGLIST
+	instead of SB-KERNEL:%FUNCTION-ARGLIST
+	From Peter Van Eynde <pvaneynd@debian.org>
+
+2002-03-27 00:53  sds
+
+	* net.lisp:
+
+	(socket-accept) [cmu]: :BUFFERING depends on BIN, like in OPEN-SOCKET
+
+2002-03-23 01:42  kevinrosenberg
+
+	* environment/software.lisp:
+
+	Fixed defgeneric lambda list
+
+2002-03-20 16:27  sds
+
+	* port.html:
+
+	Content-Type: charset=utf-8
+
+2002-03-14 22:11  kevinrosenberg
+
+	* environment/: env-package.lisp, init-environment.lisp,
+	  software.lisp, utilities.lisp, impl-dependent/allegro.lisp:
+
+	Added exported binary-directory-name that returns a unique string
+	for an implemenation that is appropriate for a binary directory name.
+
+	Changed a few mode lines to Lisp from CLtL.
+
+2002-03-06 16:20  marcoxa
+
+	* environment/load-cl-environment.lisp:
+
+	Removed the `:case :common' from the loader file.
+
+2002-03-06 08:51  kevinrosenberg
+
+	* environment/: system-info.lisp, impl-dependent/clisp.lisp:
+
+	Updated some CLISP functions invocations from lisp: package to ext: package
+
+2002-03-04 23:54  marcoxa
+
+	* environment/init-environment.lisp:
+
+	Fixed some remaining case problems.  Hopefully now CL-ENVIRONMENT will
+	load cleanly in Franz's case sensitive images.
+
+2002-03-02 20:27  marcoxa
+
+	* configuration/ChangeLog:
+
+	ChangeLog updated.
+
+2002-03-02 20:27  marcoxa
+
+	* configuration/defconf.lisp:
+
+	Fixed minor problem in clauses initialization and parsing.
+	The warning (due to uninitialized fields and undefaulted keyword
+	arguments) has gone away.
+
+2002-03-02 20:25  marcoxa
+
+	* configuration/defconf-package.lisp:
+
+	Made the package file more ACL kludgy case sensitivity friendly.
+
+2002-02-28 23:03  marcoxa
+
+	* environment/operating-system.lisp:
+
+	Fixed definitions of OS-FILE-SYSTEM-DIRECTORY-SEPARATOR methods.
+
+2002-02-28 00:58  marcoxa
+
+	* environment/impl-dependent/lispworks.lisp:
+
+	Updated method for current directory.
+
+2002-02-27 18:57  marcoxa
+
+	* environment/ChangeLog:
+
+	ChangeLog updated.
+
+2002-02-27 18:57  marcoxa
+
+	* environment/load-cl-environment.lisp:
+
+	Added `:case :common' to load directory definition.
+
+2002-02-27 18:52  marcoxa
+
+	* environment/: operating-system.lisp, env-package.lisp:
+
+	Changed case of some definitions again, to accommodate Franz's kludgy
+	case sensitivity modes.
+
+2002-02-27 18:51  marcoxa
+
+	* environment/init-environment.lisp:
+
+	Added setup for `sparc-v9-machine'.  Probably it needs some tuning.
+
+2002-02-27 18:49  marcoxa
+
+	* environment/machine.lisp:
+
+	Added `sparc-v9-machine'.
+
+2002-02-27 16:47  marcoxa
+
+	* environment/load-cl-environment.lisp:
+
+	Oooops, missed one substitution. Fixed.
+
+2002-02-27 16:43  marcoxa
+
+	* environment/operating-system.lisp:
+
+	Checked some `case sensitivity' issues, added Mac-OS-X, and changed
+	copyright dates.
+
+2002-02-27 16:42  marcoxa
+
+	* environment/load-cl-environment.lisp:
+
+	Added changes suggested by Kevin Rosenberg to make the package load
+	more smoothly under Windows.
+
+2002-02-27 16:41  marcoxa
+
+	* environment/init-environment.lisp:
+
+	New copyright dates.
+
+2002-02-27 16:40  marcoxa
+
+	* environment/env-package.lisp:
+
+	Made changes to placate Franz's Allegro kludgy case sensitivity modes.
+
+2002-02-23 00:08  marcoxa
+
+	* configuration/ChangeLog:
+
+	ChangeLog updated.
+
+2002-02-23 00:08  marcoxa
+
+	* configuration/INSTALLATION:
+
+	Slightly improved INSTALLATION instructions.
+
+2002-02-23 00:01  marcoxa
+
+	* configuration/defconf.system:
+
+	Improved error messages under suggestions by Edmund Weitz.
+
+2002-02-22 16:35  marcoxa
+
+	* environment/INSTALLATION:
+
+	Changed the installation instructions.
+
+2002-02-22 16:35  marcoxa
+
+	* environment/env.system:
+
+	Changed the initial comment and added the push of the :cl-environment
+	feature.
+	Note however, that this is not the preferred way to load
+	CL-ENVIRONMENT. Please check the INSTALLATION file.
+
+2002-02-21 02:26  sds
+
+	* environment/: load-cl-environment.lisp, software.lisp:
+
+	CMUCL is identified by :CMU and Allegro CL by :ALLEGRO
+
+2002-02-19 18:16  marcoxa
+
+	* environment/ChangeLog:
+
+	File added.
+
+2002-02-19 18:13  marcoxa
+
+	* environment/README:
+
+	READEM file updated.
+
+2002-02-06 20:01  sds
+
+	* gray.lisp:
+
+	avoid interning a symbol in an implementation-internal package
+
+2002-01-26 20:29  sds
+
+	* sys.lisp:
+
+	(tz->string): accept an optional second arg LONG to allow
+	output in the <http://www.w3.org/TR/NOTE-datetime> format
+
+2002-01-23 15:31  sds
+
+	* sys.lisp:
+
+	(current-time): TZ is a RATIONAL, not a FIXNUM
+	Reported by "Greg Harvey" <gharvey@cs.mun.ca>
+
+2002-01-22 19:37  stig
+
+	* path.lisp:
+
+	s/#+cmucl/#+cmu/ on DEFULAT-DIRECTORY function
+
+2002-01-07 19:54  sds
+
+	* net.lisp:
+
+	(open-socket) [CMUCL]: use :FULL buffering for BIN sockets
+	Reported by Peter Van Eynde <pvaneynd@debian.org>
+
+2001-12-04 23:56  sds
+
+	* .cvsignore:
+
+	moved the common stuff to CVSROOT
+
+2001-12-04 23:15  sds
+
+	* net.lisp:
+
+	(net-path): renamed from `path'
+
+2001-11-09 22:43  sds
+
+	* Makefile, port.system, proc.lisp:
+
+	eol fix
+
+2001-11-09 22:22  sds
+
+	* path.lisp:
+
+	(load-logical-host-def): new internal function
+	(*logical-hosts-definitions*): new user variable
+	(load-logical-host): new exported function, a replacement
+	 for `load-logical-pathname-translations'
+
+2001-11-09 20:24  sds
+
+	* sys.lisp:
+
+	comment
+
+2001-11-09 20:24  sds
+
+	* port.system, sys.lisp:
+
+	sys depends on path
+
+2001-11-09 20:15  sds
+
+	* Makefile, path.lisp, port.html, port.system, sys.lisp:
+
+	extracted pathname-related functions from sys.lisp
+
+2001-11-02 23:30  sds
+
+	* ext.lisp, gray.lisp, net.lisp, proc.lisp, shell.lisp, sys.lisp:
+
+	prefix module names with `port-'
+
+2001-10-19 21:41  marcoxa
+
+	* environment/feature-tagged-type-class.lisp:
+
+	Added file containint the mixin class FEATURE-TAGGED-TYPE-CLASS.
+
+2001-10-11 23:28  sds
+
+	* sys.lisp:
+
+	(probe-directory): fold the name.type into directory
+
+2001-10-09 23:21  marcoxa
+
+	* environment/software.lisp:
+
+	Changed 'tag' slot declaration back to SYMBOL. (KEYWORD is causing
+	unforseen problems in CMUCL).
+
+2001-10-08 18:24  marcoxa
+
+	* environment/utilities.lisp:
+
+	Added `inline' declamation for CWD.
+
+2001-10-08 18:24  marcoxa
+
+	* environment/software.lisp:
+
+	Added tags to some CL definition classes.
+
+2001-10-08 18:22  marcoxa
+
+	* environment/impl-dependent/corman.lisp:
+
+	Added file for Corman Lisp dependencies.
+
+2001-09-26 17:51  sds
+
+	* sys.lisp:
+
+	(string->tz): new function
+	(tz->string): additional dst arg
+	(current-time): reflect that
+
+2001-09-26 17:10  sds
+
+	* sys.lisp:
+
+	(+time-zones+): DST in GMT is called BST (British Summer Time)
+
+2001-09-09 22:41  sds
+
+	* net.lisp:
+
+	(path): new network condition (404&c)
+
+2001-09-09 21:55  sds
+
+	* gray.lisp, net.lisp, shell.lisp, sys.lisp:
+
+	[Alexey Dejneka <adejneka@comail.ru>] support SBCL
+
+2001-09-07 18:05  sds
+
+	* port.html:
+
+	typos
+
+2001-08-29 17:42  marcoxa
+
+	* environment/env.system:
+
+	Changed dependencies for file "system-info".
+
+2001-08-29 17:22  marcoxa
+
+	* environment/utilities.lisp:
+
+	Added CURRENT-WORKING-DIRECTORY and CWD.
+
+2001-08-29 17:21  marcoxa
+
+	* environment/system-info.lisp:
+
+	Changed to use CURRENT-WORKING-DIRECTORY.
+
+2001-08-29 17:20  marcoxa
+
+	* environment/operating-system.lisp:
+
+	Added definitions for Windows-XP and Windows-ME.
+
+2001-08-29 17:19  marcoxa
+
+	* environment/load-cl-environment.lisp:
+
+	Fixed some translations ad added loading of implementation dependent
+	files.
+
+2001-08-29 17:17  marcoxa
+
+	* environment/impl-dependent/: allegro.lisp, clisp.lisp,
+	  cmucl.lisp, lcl.lisp, lispworks.lisp:
+
+	File added.
+
+2001-08-29 17:16  marcoxa
+
+	* environment/: env-package.lisp, environment.lisp:
+
+	Updated copyright notice.
+
+2001-08-29 17:15  marcoxa
+
+	* environment/env-package.lisp:
+
+	Added several exports "CURRENT-DIRECTORY-PATHNAME",
+	"CURRENT-WORKING-DIRECTORY", "CWD", etc etc.
+
+2001-08-29 15:54  marcoxa
+
+	* configuration/defconf.lisp:
+
+	Changed the order in which the 'special-translations' are inserted in
+	the logical translation list.  Now they are first.  Otherwise the
+	catch all translation "**;*.*.*" would override them.
+
+2001-08-29 15:52  marcoxa
+
+	* configuration/load-cl-configuration.lisp:
+
+	Minor fix.
+
+2001-08-14 21:42  marcoxa
+
+	* environment/load-cl-environment.lisp:
+
+	Added loading of "utilities" file.
+
+2001-08-14 17:27  marcoxa
+
+	* environment/README:
+
+	Updated.
+
+2001-08-14 17:25  marcoxa
+
+	* environment/env-package.lisp:
+
+	Added export of FILE-SYSTEM-DIRECTORY-SEPARATOR.
+
+2001-08-14 17:25  marcoxa
+
+	* environment/utilities.lisp:
+
+	File added.
+
+2001-08-14 17:22  marcoxa
+
+	* environment/env.system:
+
+	Added file "utilities".
+
+2001-08-14 17:14  marcoxa
+
+	* environment/operating-system.lisp:
+
+	Added the :feature-tag initialization.
+
+2001-08-14 17:13  marcoxa
+
+	* environment/machine.lisp:
+
+	Added the :feature-tag slot.
+
+2001-08-14 17:13  marcoxa
+
+	* environment/: load-cl-environment.lisp, software.lisp,
+	  system-info.lisp:
+
+	Cleaned up a bit.
+
+2001-08-14 17:13  marcoxa
+
+	* environment/init-environment.lisp:
+
+	Added definitions for variables *OS* and *CL*.
+	Note that the conditionalization for CMU will disappear soon (as a
+	matter of fact the latest CMUCL does contain DEFINE-SYMBOL-MACRO).
+
+2001-08-14 17:09  marcoxa
+
+	* environment/env.system:
+
+	Tweaked a bit the definition of the system.
+
+2001-08-14 17:07  marcoxa
+
+	* environment/env-package.lisp:
+
+	Added a few exports, including COMPILED-FILE-EXTENSION.
+
+2001-07-16 18:13  sds
+
+	* net.lisp:
+
+	(open-socket, socket-accept): CMUCL: specify :buffering :line
+	 Reported by Janne Rinta-Manty <rintaman@cs.Helsinki.FI>
+
+2001-07-09 21:45  sds
+
+	* net.lisp:
+
+	(open-unix-socket): use OPEN on non-CMUCL lisps
+
+2001-07-09 21:42  sds
+
+	* net.lisp:
+
+	(open-unix-socket, wait-for-stream): new functions
+
+2001-07-09 19:13  sds
+
+	* shell.lisp:
+
+	(pipe-input): CMUCL: redirect stdio to the terminal
+
+2001-06-29 20:03  sds
+
+	* sys.lisp:
+
+	(setf getenv): new function
+
+2001-06-29 19:35  sds
+
+	* port.html:
+
+	fixed a link
+
+2001-06-25 21:54  sds
+
+	* sys.lisp:
+
+	require :ole on #+(and allegro mswindows)
+
+2001-06-11 21:41  sds
+
+	* net.lisp:
+
+	(socket-service-port): use NIL as EOF-value in READ-LINE
+
+2001-06-11 21:33  sds
+
+	* ext.lisp:
+
+	(+eof+): made the value more readable
+
+2001-06-09 22:07  sds
+
+	* ext.lisp:
+
+	(string-tokens): pass to FIND-PACKAGE a keyword instead of a string
+
+2001-06-09 00:48  sds
+
+	* ext.lisp:
+
+	(gc, quit): support SBCL
+	From Stig E Sandoe <stig@ii.uib.no>
+
+2001-06-08 23:58  sds
+
+	* ext.lisp:
+
+	(eof-p): use `peek-char' instead of `read-char'/`unread-char'
+
+2001-06-08 23:43  sds
+
+	* ext.lisp:
+
+	(defconst): use DEFCONSTANT when TYPE is EQL-comparable,
+	 and DEFVAR otherwise (ANSI 3.1.2.1.1.3 Constant Variables)
+
+2001-06-08 16:13  sds
+
+	* proc.lisp:
+
+	(get-lock): CMU: mp::lock-wait requires 2 args
+	Reported by Juan Hierro <hierro@ideafix.litec.csic.es>
+
+2001-05-21 18:04  sds
+
+	* sys.lisp:
+
+	(probe-directory): CLISP: drop the second value
+
+2001-05-18 18:04  sds
+
+	* sys.lisp:
+
+	(probe-directory): CLISP: enclose in `ignore-errors'
+	 CMUCL: call `namestring' (thanks to Liam Healy)
+	 generic: fixed a typo
+
+2001-05-08 17:08  marcoxa
+
+	* configuration/ChangeLog:
+
+	Forgot to update the changelog.
+	----------------------------------------------------------------------
+	Committing in .
+
+	Modified Files:
+	 	ChangeLog
+	----------------------------------------------------------------------
+
+2001-05-07 23:02  sds
+
+	* gray.lisp:
+
+	FUNDAMENTAL-STREAM is defined in PCL, while
+	 FUNDAMENTAL-INPUT-STREAM is defined in GRAY (thanks to Raymond Toy)
+
+2001-05-07 22:27  sds
+
+	* .cvsignore, port.html:
+
+	cr/lf
+
+2001-05-07 18:26  sds
+
+	* gray.lisp:
+
+	load CMUCL "gray-streams-library" when
+	 EXT:FUNDAMENTAL-STREAM does not name a class
+
+2001-04-25 23:44  sds
+
+	* shell.lisp:
+
+	(run-prog): in CLISP/lisp=cl, `ext:run-program' accepts :wait
+
+2001-04-25 20:57  sds
+
+	* shell.lisp:
+
+	(run-prog): quote arguments passed to shell via format
+
+2001-04-22 20:38  marcoxa
+
+	* configuration/: defconf.lisp, docs/tex/defconf.tex:
+
+	Fixed some problems in the macro expansion of DEFCONFIGURATION and changed
+	a few minor things in the documentation.
+	----------------------------------------------------------------------
+	Committing in .
+
+	Modified Files:
+	 	defconf.lisp docs/tex/defconf.tex
+	----------------------------------------------------------------------
+
+2001-04-22 07:02  sds
+
+	* port.html:
+
+	sourceforge uses cvsview.cgi
+	suggest `shadowing-import'
+
+2001-04-11 16:40  sds
+
+	* ext.lisp, gray.lisp, net.lisp, shell.lisp, sys.lisp:
+
+	updated for CLISP #+LISP=CL
+
+2001-04-03 20:49  sds
+
+	* ext.lisp:
+
+	(code, case-error, not-implemented): added :documentation
+
+2001-03-21 01:31  sds
+
+	* sys.lisp:
+
+	(rmdir): LispWorks: check whether
+	 `lw:delete-directory' is `fboundp'
+
+2001-03-19 17:03  sds
+
+	* sys.lisp:
+
+	removed the last patch
+
+2001-03-18 01:25  sds
+
+	* .cvsignore:
+
+	added lww *.fsl
+
+2001-03-17 23:50  liam
+
+	* sys.lisp:
+
+	Removed LispWorks from rmdir; function lw:delete-directory is not
+	defined.  Export mkdir, rmdir.
+
+2001-03-17 20:56  sds
+
+	* net.lisp:
+
+	(socket-accept): ACL5 cannot change socket format
+
+2001-03-14 00:09  sds
+
+	* sys.lisp:
+
+	(mkdir): fixed arg name
+
+2001-03-14 00:09  sds
+
+	* ext.lisp:
+
+	(required-argument): export on non-CMUCL platforms
+
+2001-03-07 21:39  sds
+
+	* sys.lisp:
+
+	(probe-directory): fixed for LispWorks (thanks to David E. Young)
+	(mkdir, rmdir): new functions
+
+2001-02-24 00:29  sds
+
+	* ext.lisp:
+
+	(required-argument): fix import/export for CMUCL
+
+2001-02-13 18:21  sds
+
+	* port.html:
+
+	converted to XHTML 1
+
+2001-02-07 21:27  sds
+
+	* ext.lisp:
+
+	(string-tokens): when `max' is nil,
+	 use `read-from-string' on the whole string
+
+2001-02-06 21:09  sds
+
+	* ext.lisp:
+
+	(defpackage "PORT"): use string!
+
+2001-02-06 20:58  sds
+
+	* ext.lisp:
+
+	(defpackage port): use strings instead of symbols
+
+2001-01-23 16:54  sds
+
+	* net.lisp:
+
+	(socket-host/port): lispworks: use
+	 `comm:socket-stream-address' instead of the non-existant
+	 `comm:socket-stream-local-address'
+
+2001-01-08 23:14  sds
+
+	* ext.lisp:
+
+	updated the (C) statement
+
+2001-01-08 21:39  sds
+
+	* ext.lisp:
+
+	(required-argument): new function (from CMUCL)
+
+2000-12-19 16:51  marcoxa
+
+	* configuration/impl-dependent/allegro.lisp:
+
+	Fixed a minor typo (a missin parenthesis) and added the correct function
+	from EXCL to get the current directory.
+	----------------------------------------------------------------------
+	Committing in .
+
+	Modified Files:
+	 	impl-dependent/allegro.lisp
+	----------------------------------------------------------------------
+
+2000-12-12 17:15  sds
+
+	* port.system:
+
+	"net" depends on "sys" for `getenv'
+
+2000-12-03 07:01  sds
+
+	* net.lisp:
+
+	require :sys because of `getenv'
+
+2000-11-16 19:34  sds
+
+	* net.lisp:
+
+	Allegro uses feature :mswindows, not :win32
+
+2000-11-16 19:31  sds
+
+	* sys.lisp:
+
+	(sysinfo): ported to the Allegro/win32 registry interface
+
+2000-11-15 18:56  sds
+
+	* sys.lisp:
+
+	(class-slot-*, variable-special-p): works with ACL6 now
+
+2000-11-15 18:29  sds
+
+	* net.lisp:
+
+	(socket-accept): ignore `bin' in ACL6
+
+2000-11-13 03:01  sds
+
+	* net.lisp:
+
+	(socket-accept): in ALC6 all sockets are bivalent
+
+2000-11-10 20:49  sds
+
+	* shell.lisp:
+
+	(run-prog): wait defaults to T;
+	it now works on LispWorks and CLISP/UNIX too
+
+2000-10-12 00:25  marcoxa
+
+	* configuration/impl-dependent/allegro.lisp:
+
+	Fixed small typo that made the file not loadable.
+
+2000-10-11 20:38  marcoxa
+
+	* configuration/defconf.system:
+
+	Added "lisp" :source-extension to DEFSYSTEM spec.
+	----------------------------------------------------------------------
+	Committing in .
+
+	Modified Files:
+	 	cl-configuration/defconf.system
+	----------------------------------------------------------------------
+
+2000-10-11 20:36  marcoxa
+
+	* environment/env.system:
+
+	Added "lisp" :source-extension to DEFSYSTEM spec.
+	----------------------------------------------------------------------
+	Committing in .
+	Modified Files:
+	 	cl-environment/env.system
+	----------------------------------------------------------------------
+
+2000-10-10 18:17  marcoxa
+
+	* configuration/ChangeLog, configuration/defconf.lisp,
+	  configuration/defconf.system,
+	  configuration/load-cl-configuration.lisp,
+	  configuration/docs/tex/defconf.tex,
+	  configuration/impl-dependent/defsys-availability.lisp,
+	  configuration/impl-dependent/mk-defsystem.lisp,
+	  environment/env-package.lisp, environment/operating-system.lisp:
+
+	----------------------------------------------------------------------
+	Modifications to CL-CONFIGURATION and to CL-ENVIRONMENT.
+	CL-ENVIRONMENT has been updated with new entries.
+
+	CL-CONFIGURATION has been fixed.  Though the internal design is not
+	perfect, it now works as advertised.  The CONF:SETUP method has been
+	especially put under the microcope and now it effectively implements
+	the overriding of defaults, as it should.
+
+	Committing in .
+
+	Modified Files:
+		cl-environment/env-package.lisp
+		cl-environment/operating-system.lisp
+		clocc/src/port/configuration/defconf.lisp
+		clocc/src/port/configuration/defconf.system
+		clocc/src/port/configuration/load-cl-configuration.lisp
+		clocc/src/port/configuration/docs/tex/defconf.tex
+		clocc/src/port/configuration/impl-dependent/mk-defsystem.lisp
+	Added Files:
+		clocc/src/port/configuration/ChangeLog
+		clocc/src/port/configuration/impl-dependent/defsys-availability.lisp
+	----------------------------------------------------------------------
+
+2000-09-20 18:27  sds
+
+	* port.html:
+
+	mention the CLOCC INSTALL file
+
+2000-09-04 21:29  sds
+
+	* shell.lisp:
+
+	(run-prog): CMUCL: forgot #'
+
+2000-09-02 20:29  marcoxa
+
+	* environment/: INSTALLATION, README:
+
+	Corrected some minor spelling mistakes.
+	----------------------------------------------------------------------
+	Committing in .
+
+	Modified Files:
+	 	INSTALLATION README
+	----------------------------------------------------------------------
+
+2000-09-02 20:27  marcoxa
+
+	* configuration/load-cl-configuration.lisp:
+
+	Added new file for non MK-DEFSYSTEM dependent load and compile operation.
+	----------------------------------------------------------------------
+	Committing in .
+
+	Added Files:
+	 	src/port/configuration/load-cl-configuration.lisp
+	----------------------------------------------------------------------
+
+2000-09-02 20:23  marcoxa
+
+	* configuration/: INSTALLATION, NOTES:
+
+	Fixed some minor spelling mistakes and changed the INSTALLATION instructions.
+	----------------------------------------------------------------------
+	Committing in .
+
+	Modified Files:
+	 	src/port/configuration/INSTALLATION
+	 	src/port/configuration/NOTES
+	----------------------------------------------------------------------
+
+2000-08-19 23:32  sds
+
+	* sys.lisp:
+
+	(slot-one-initarg): do not use slot-name
+
+2000-08-14 21:25  sds
+
+	* sys.lisp:
+
+	(class-slot-initargs): do not take `car' of `slot-one-initarg'
+
+2000-08-14 18:24  sds
+
+	* sys.lisp:
+
+	(class-slot-initargs): new function; export it
+
+2000-08-07 21:00  sds
+
+	* sys.lisp:
+
+	(class-slot-list): accept anything as the first arg,
+	not just a struct or a CLOS class instance
+
+2000-07-31 19:54  sds
+
+	* sys.lisp:
+
+	(variable-special-p, arglist, class-slot-list): support Lucid
+
+2000-07-31 19:53  sds
+
+	* ext.lisp:
+
+	(gc, quit): support Lucid
+
+2000-07-31 19:52  sds
+
+	* shell.lisp:
+
+	(run-prog, pipe-output, pipe-input): support Lucid
+
+2000-07-31 19:51  sds
+
+	* proc.lisp:
+
+	(with-lock): support Lucid
+
+2000-07-20 20:20  sds
+
+	* net.lisp:
+
+	(open-socket-server): CMUCL: use 0 when port is nil
+	(socket-server-host/port): CMUCL: use `ext:get-socket-host-and-port'
+
+2000-05-31 22:17  sds
+
+	* sys.lisp:
+
+	(pathname-ensure-name): new function
+
+2000-05-23 19:00  sds
+
+	* port.html:
+
+	fixed cellar ref
+
+2000-05-23 18:57  sds
+
+	* net.lisp:
+
+	(socket-string): use `print-unreadable-object'
+
+2000-05-22 21:18  sds
+
+	* net.lisp:
+
+	(socket-string): typo
+
+2000-05-22 21:06  sds
+
+	* net.lisp:
+
+	(host/port-string, socket-server-string): removed
+	(socket-string): print both local and peer
+
+2000-05-22 19:51  sds
+
+	* sys.lisp:
+
+	(finalize): new function
+	(arglist): support CormanLisp
+
+2000-05-18 17:57  sds
+
+	* net.lisp:
+
+	(host/port-string): new function, "0.0.0.0"->"127.0.0.1"
+	(socket-string, socket-server-string): use it
+
+2000-05-15 22:58  sds
+
+	* net.lisp:
+
+	(socket-accept): CLISP: fixed for null wait
+
+2000-05-15 16:19  sds
+
+	* proc.lisp:
+
+	(with-lock): ignore `lock' when no threads
+
+2000-05-12 20:14  sds
+
+	* proc.lisp:
+
+	(with-timeout): added missing commas
+
+2000-05-12 20:13  sds
+
+	* ext.lisp:
+
+	(defconst): drop `eval-when'
+
+2000-05-11 17:07  sds
+
+	* port.system:
+
+	print some statistics about the system before compilation
+
+2000-05-09 20:52  sds
+
+	* net.lisp:
+
+	(socket-host/port): return both remote and local host&port
+
+2000-05-09 20:51  sds
+
+	* sys.lisp:
+
+	(class-slot-list): added the argument to `not-implemented'
+
+2000-05-09 20:49  sds
+
+	* ext.lisp:
+
+	(code): `proc' is not necessarily a symbol
+
+2000-05-09 20:06  sds
+
+	* port.html:
+
+	fixed some links
+
+2000-05-08 19:11  sds
+
+	* net.lisp:
+
+	(socket-host/port): CLISP: use lisp:socket-stream-peer (thanks Don)
+
+2000-05-02 16:33  sds
+
+	* net.lisp:
+
+	export `hostent' and `servent' accessors
+
+2000-05-01 22:14  sds
+
+	* net.lisp:
+
+	fixed values declaration
+
+2000-04-28 01:35  sds
+
+	* net.lisp:
+
+	(socket-accept): `bin' is now a keyword; new keyword arg `wait'
+
+2000-04-27 17:18  sds
+
+	* port.html:
+
+	added a link for each lisp file
+
+2000-04-27 17:17  sds
+
+	* Makefile:
+
+	added LGPL to ZIPEXTRA
+
+2000-04-21 18:37  sds
+
+	* port.html:
+
+	[no log message]
+
+2000-04-19 18:56  sds
+
+	* .cvsignore:
+
+	ignore images
+
+2000-04-19 18:52  sds
+
+	* .cvsignore:
+
+	[no log message]
+
+2000-04-19 18:49  sds
+
+	* proc.lisp:
+
+	support CormanLisp
+
+2000-04-19 18:39  sds
+
+	* net.lisp:
+
+	(resolve-host-ipaddr): fixed for LispWorks
+	(defstruct socket-server): added slot `port'
+	(socket-server-host/port): replaces `socket-server-host'
+	and `socket-server-port'
+
+2000-04-19 18:34  sds
+
+	* sys.lisp:
+
+	(variable-special-p): fixed for LispWorks
+	(class-slot-list, chdir, default-directory): support CormanLisp
+
+2000-04-19 18:32  sds
+
+	* ext.lisp:
+
+	(gc): support CormanLisp
+	(quit): support CormanLisp and LispWorks
+
+2000-04-10 20:48  sds
+
+	* sys.lisp:
+
+	(arglist): support LispWorks
+
+2000-04-10 20:42  sds
+
+	* net.lisp:
+
+	(socket-host/port): replaces `socket-host' and `socket-port'
+	(resolve-host-ipaddr): fixed for GCL and LispWorks
+	(socket-string): print socket as host:port
+	(socket-server &c): support LispWorks
+
+2000-04-10 20:35  sds
+
+	* shell.lisp:
+
+	(run-prog): support Liquid
+	(pipe-output, pipe-input): fixed for LispWorks
+
+2000-04-07 19:02  sds
+
+	* sys.lisp:
+
+	use abbreviated package names consistently
+
+2000-04-06 16:42  sds
+
+	* proc.lisp:
+
+	(giveup-lock): support CMUCL
+
+2000-04-06 01:58  sds
+
+	* gray.lisp:
+
+	support LispWorks
+
+2000-04-06 01:56  sds
+
+	* proc.lisp:
+
+	Thanks John Wiseman.  More work is needed for Genera&Lucid.
+	(process-yield): new fuctions
+	(make-lock, get-lock, giveup-lock): new functions
+	(with-lock): new macro
+
+2000-04-06 01:37  sds
+
+	* sys.lisp:
+
+	(variable-special-p): support lispworks
+
+2000-04-05 00:14  sds
+
+	* net.lisp:
+
+	(socket-server-host): fixed for CMUCL
+
+2000-04-03 23:33  sds
+
+	* net.lisp:
+
+	(socket-accept): allegro: use `bin'
+
+2000-04-03 23:09  sds
+
+	* sys.lisp:
+
+	(arglist, chdir): allegro has EXCL, not EXT
+
+2000-04-03 22:43  sds
+
+	* proc.lisp:
+
+	(with-timeout): fixed call to `with-gensyms'
+
+2000-03-30 21:48  sds
+
+	* Makefile:
+
+	(SOURCES): added proc
+
+2000-03-30 19:11  sds
+
+	* ext.lisp:
+
+	(eof-p): new function
+
+2000-03-29 17:32  sds
+
+	* net.lisp:
+
+	cannot use `call-next-method' in `define-condition' :report.
+	(report-network-condition): new function
+	(network, timeout): use it
+
+2000-03-28 20:24  sds
+
+	* net.lisp:
+
+	(servent): new defstruct
+	(socket-service-port): return it
+
+2000-03-28 20:02  sds
+
+	* net.lisp:
+
+	(resolve-host-ipaddr): in clisp, it's `addrtype'
+
+2000-03-28 16:39  sds
+
+	* port.html:
+
+	mention mirrors
+
+2000-03-24 01:23  sds
+
+	* shell.lisp:
+
+	comment
+
+2000-03-23 10:07  marcoxa
+
+	* environment/: init-environment.lisp, operating-system.lisp:
+
+	Added some new OPERATING-SYSTEMs definitions and fixed initializations
+	for ACL and LW under MS-Windows and added completely new
+	initializations for CLisp.
+
+2000-03-23 05:06  sds
+
+	* sys.lisp:
+
+	(+whitespace+): moved to cllib/withtype
+
+2000-03-23 00:54  sds
+
+	* shell.lisp, sys.lisp:
+
+	use package prefixes for CMU CL and GCL
+
+2000-03-23 00:51  sds
+
+	* ext.lisp:
+
+	(quit): optional error code argument
+
+2000-03-09 21:27  sds
+
+	* Makefile, gray.lisp, port.html, port.system:
+
+	Gray streams unification
+
+2000-03-09 20:19  sds
+
+	* port.html:
+
+	minor clean-up
+
+2000-03-08 21:51  sds
+
+	* net.lisp:
+
+	(socket-server-host, socket-server-port): exported
+
+2000-03-08 19:22  sds
+
+	* .cvsignore, Makefile, port.html:
+
+	added docs
+
+2000-03-07 21:28  sds
+
+	* net.lisp:
+
+	(socket-server-host, socket-server-port): new functions
+	(socket-host, socket-accept): fixed for CMUCL
+
+2000-03-03 23:01  sds
+
+	* ext.lisp, net.lisp, proc.lisp, shell.lisp, sys.lisp:
+
+	fixed provide statements
+
+2000-03-03 16:09  marcoxa
+
+	* configuration/defconf.lisp:
+
+	Cleaned up a comment in 'defconf.lisp'.  It did not make any sense anymore.
+
+2000-03-01 21:01  sds
+
+	* sys.lisp:
+
+	(arglist, class-slot-list): new functions
+
+2000-03-01 17:02  sds
+
+	* sys.lisp:
+
+	(variable-special-p): new function
+
+2000-02-28 17:12  marcoxa
+
+	* configuration/impl-dependent/pcl-defsys.lisp:
+
+
+	Removed some spurious files which where submitted by error and already
+	fixed an error in the file 'impl-dependent/pcl-defsys.lisp'.
+
+2000-02-28 16:05  marcoxa
+
+	* configuration/: defconf-package.lisp, defconf.system, NOTES,
+	  configuration.lisp, defconf.lisp, COPYING, INSTALLATION, README,
+	  configuration-template-impl.lisp, configuration-template.lisp,
+	  defconf.conf, impl-dependent/allegro.lisp,
+	  impl-dependent/clisp.lisp, impl-dependent/cmucl.lisp,
+	  impl-dependent/genera.lisp, impl-dependent/lispworks.lisp,
+	  impl-dependent/mac-os.lisp, impl-dependent/mk-defsystem.lisp,
+	  impl-dependent/ms-dos.lisp, impl-dependent/unix.lisp,
+	  impl-dependent/windows.lisp, tests/defconf-test-1.lisp,
+	  tests/defconf-test-2.lisp, impl-dependent/pcl-defsys.lisp,
+	  docs/tex/defconf.tex:
+
+
+	First checkin of CL.EXT.CONFIGURATION package.
+
+2000-02-28 16:05  marcoxa
+
+	* configuration/: defconf-package.lisp, defconf.system, NOTES,
+	  configuration.lisp, defconf.lisp, COPYING, INSTALLATION, README,
+	  configuration-template-impl.lisp, configuration-template.lisp,
+	  defconf.conf, impl-dependent/allegro.lisp,
+	  impl-dependent/clisp.lisp, impl-dependent/cmucl.lisp,
+	  impl-dependent/genera.lisp, impl-dependent/lispworks.lisp,
+	  impl-dependent/mac-os.lisp, impl-dependent/mk-defsystem.lisp,
+	  impl-dependent/ms-dos.lisp, impl-dependent/unix.lisp,
+	  impl-dependent/windows.lisp, tests/defconf-test-1.lisp,
+	  tests/defconf-test-2.lisp, impl-dependent/pcl-defsys.lisp,
+	  docs/tex/defconf.tex:
+
+	Initial revision
+
+2000-02-26 19:32  marcoxa
+
+	* environment/: env-package.lisp, operating-system.lisp,
+	  software.lisp:
+
+
+	----------------------------------------------------------------------
+	Committing in 'cl-envronment'.
+
+	The Modified files now contain a more consistent naming of
+	the various classes and associated tags (i.e. keywords).
+
+	Modified Files:
+		env-package.lisp operating-system.lisp software.lisp
+	Removed Files:
+		.CL-ENV.prcs_aux
+	----------------------------------------------------------------------
+
+2000-02-18 22:16  sds
+
+	* Makefile, ext.lisp, net.lisp, port.system, proc.lisp, shell.lisp,
+	  sys.lisp:
+
+	in-package :port now; make system works
+
+2000-02-10 18:55  sds
+
+	* net.lisp:
+
+	(hostent): new defstruct
+	(resolve-host-ipaddr): return a `hostent' instance
+	instead of multiple values.
+
+2000-02-10 18:53  sds
+
+	* ext.lisp:
+
+	(+eof+): new constant (for `string-tokens')
+	(string-tokens): new function (for net)
+
+2000-02-08 18:13  marcoxa
+
+	* environment/: env-package.lisp, env.system,
+	  init-environment.lisp, machine.lisp, operating-system.lisp,
+	  software.lisp, COPYING, INSTALLATION, README, environment.lisp,
+	  load-cl-environment.lisp, system-info.lisp:
+
+	First checkin of CL.ENVIRONMENT package.
+
+2000-02-08 18:13  marcoxa
+
+	* environment/: env-package.lisp, env.system,
+	  init-environment.lisp, machine.lisp, operating-system.lisp,
+	  software.lisp, COPYING, INSTALLATION, README, environment.lisp,
+	  load-cl-environment.lisp, system-info.lisp:
+
+	Initial revision
+
+1999-11-30 22:14  sds
+
+	* Makefile:
+
+	use the new clocc.mk features
+
+1999-11-30 22:10  sds
+
+	* .cvsignore:
+
+	ignore compiled files
+
+1999-11-24 18:07  sds
+
+	* ext.lisp, net.lisp, shell.lisp, sys.lisp:
+
+	Cross-implementation Portability System
+

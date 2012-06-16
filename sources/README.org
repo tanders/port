@@ -1,0 +1,7 @@
+These are the sources of [[http://clocc.sourceforge.net/dist/port.html][PORT]], which is part of [[http://clocc.sourceforge.net/][CLOCC]]. PORT provides a platform-independent interface to various features absent from the ANSI Common Lisp standard, such as sockets, shell, Gray streams etc. The implementation-specific things, like loads of #+/#-, are hidden from the user.
+
+The original CLOCC sources of PORT do not support ASDF. Instead, the present sources stem from the debian cl-port package: cl-port_20060408.orig.tar.gz and cl-port_20060408-1.diff.gz (see http://packages.debian.org/unstable/devel/cl-port), and have been created by 
+
+  cd cl-port-20060408.orig
+  patch -p1 < ../cl-port_20060408-1.diff
+

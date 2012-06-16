@@ -1,0 +1,8 @@
+OMPort packages the sources of [[http://clocc.sourceforge.net/dist/port.html][PORT]], which is part of [[http://clocc.sourceforge.net/][CLOCC]] as an [[http://en.wikipedia.org/wiki/OpenMusic][OpenMusic]] library, so that it can be easily loaded into OpenMusic. In addition, the subdirectory sources can be loaded as a library into [[http://www2.siba.fi/PWGL/][PWGL]], just rename that directory. 
+
+PORT provides a platform-independent interface to various features absent from the ANSI Common Lisp standard, such as sockets, shell, Gray streams etc. The implementation-specific things, like loads of #+/#-, are hidden from the user.
+
+OMPort does not define any graphical boxes for OpenMusic nor for PWGL (at least not currently).
+
+Torsten Anders
+June 2012

@@ -1,0 +1,16 @@
+Source: cl-port
+Section: devel
+Priority: optional
+Maintainer: Peter Van Eynde <pvaneynd@debian.org>
+Build-Depends: debhelper (>= 4.0.0)
+Build-Depends-Indep: dh-lisp
+Standards-Version: 3.7.2.0
+
+Package: cl-port
+Architecture: all
+Depends: ${shlibs:Depends},common-lisp-controller
+Suggests: cmucl-source,cmucl,sbcl,clisp
+Description: Common Lisp Object Collections Port Package
+ This package provides cross-implementation portability functions taken
+ from the Common Lisp Object Code Collection. This includes codes for
+ sockets, shell functions, and paths.
