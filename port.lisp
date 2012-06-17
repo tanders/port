@@ -3,8 +3,7 @@
 
 ;; loading files
 (mapc #'(lambda (file) 
-	  (compile&load (make-pathname :directory (append (pathname-directory *load-pathname*)
-							  '("sources"))
+	  (compile&load (make-pathname :directory (pathname-directory *load-pathname*)
 				       :name file)))
       ;; source files (in required order of loading)
       '("ext" 
