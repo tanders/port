@@ -1,4 +1,4 @@
-These sources package [[http://clocc.sourceforge.net/dist/port.html][PORT]], which is part of [[http://clocc.sourceforge.net/][CLOCC]] as a library for [[http://en.wikipedia.org/wiki/OpenMusic][OpenMusic]] and also  [[http://www2.siba.fi/PWGL/][PWGL]], so that PORT can be easily loaded into OpenMusic and PWGL.
+These sources package [[http://clocc.sourceforge.net/dist/port.html][PORT]], which is part of [[http://clocc.sourceforge.net/][CLOCC]] as a library for [[http://en.wikipedia.org/wiki/OpenMusic][OpenMusic]] and also  [[http://www2.siba.fi/PWGL/][PWGL]], so that PORT can be easily loaded into OpenMusic and PWGL. Just copy the whole folder of this software into your user libraries folder on your system (refer to the documentation of OpenMusic or PWGL for details).
 
 PORT provides a platform-independent interface to various features absent from the ANSI Common Lisp standard, such as sockets, shell, Gray streams etc. The implementation-specific things, like loads of #+/#-, are hidden from the user.
 
